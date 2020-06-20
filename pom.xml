@@ -98,7 +98,7 @@
 		<disruptor.version>3.4.2</disruptor.version>
 		<reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
 		<easyexcel.version>1.1.2-beat1</easyexcel.version>
-		<netty.version>4.1.16.Final</netty.version>
+		<netty.version>4.1.42.Final</netty.version>
 		<oracle.ojdbc.version>12.1.0.1-atlassian-hosted</oracle.ojdbc.version>
 		<liferay.version>1.2.2.LIFERAY-PATCHED-1</liferay.version>
 		<aspectj.version>1.9.4</aspectj.version>
