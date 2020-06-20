@@ -103,7 +103,7 @@
 		<liferay.version>1.2.2.LIFERAY-PATCHED-1</liferay.version>
 		<aspectj.version>1.9.4</aspectj.version>
 		<swagger.version>2.7.0</swagger.version>
-		<security.oauth.version>2.2.1.RELEASE</security.oauth.version>
+		<security.oauth.version>2.2.5.RELEASE</security.oauth.version>
 		<security.jwt.version>1.0.9.RELEASE</security.jwt.version>
 		<social.security.version>1.1.6.RELEASE</social.security.version>
 		<shiro.spring.version>1.4.0</shiro.spring.version>
