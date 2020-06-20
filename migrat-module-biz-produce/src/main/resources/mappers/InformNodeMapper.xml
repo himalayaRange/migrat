@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymy.xxb.migrat.module.biz.produce.mapper.InformNodeMapper" >
+  <resultMap id="BaseResultMap" type="com.ymy.xxb.migrat.module.biz.produce.entity.InformNodeDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="apply_module" property="applyModule" jdbcType="VARCHAR" />
+    <result column="node_name" property="nodeName" jdbcType="VARCHAR" />
+    <result column="node_alias" property="nodeAlias" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="TINYINT" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+      <collection property="informTemplates" ofType="com.ymy.xxb.migrat.module.biz.produce.entity.InformTemplateDO"
+                  resultMap="informTemplateMap"/>
+  </resultMap>
+    <resultMap id="informTemplateMap" type="com.ymy.xxb.migrat.module.biz.produce.entity.InformTemplateDO" >
+        <id column="rid" property="id" jdbcType="VARCHAR" />
+        <result column="send_alias" property="sendAlias" jdbcType="VARCHAR" />
+        <result column="send_node" property="sendNode" jdbcType="VARCHAR" />
+        <result column="template_title" property="templateTitle" jdbcType="VARCHAR" />
+        <result column="template_code" property="templateCode" jdbcType="VARCHAR" />
+        <result column="message_content" property="messageContent" jdbcType="LONGVARCHAR" />
+        <result column="state" property="state" jdbcType="TINYINT" />
+        <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!-- 分页标签 -->
+    <sql id="table_page">
+        <if test="rowStart !=null  and  rowEnd !=null ">
+            <![CDATA[LIMIT #{rowStart},#{rowEnd}]]>
+        </if>
+    </sql>
+    
+    <sql id="Base_Column_List" >
+    id,user,apply_module,node_name,node_alias,sort,state,create_time,create_user,modify_time,modify_user,tenant_id
+    </sql>
+    
+    <insert id="insert" parameterType="com.ymy.xxb.migrat.module.biz.produce.entity.InformNodeDO" >
+        insert into xx_inform_node
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="user != null" >
+                user,
+            </if>
+            <if test="applyModule != null" >
+                apply_module,
+            </if>
+            <if test="nodeName != null" >
+                node_name,
+            </if>
+            <if test="nodeAlias != null" >
+                node_alias,
+            </if>
+            <if test="sort != null" >
+                sort,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="createUser != null" >
+                create_user,
+            </if>
+            <if test="modifyTime != null" >
+                modify_time,
+            </if>
+            <if test="modifyUser != null" >
+                modify_user,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="user != null" >
+                #{user,jdbcType=VARCHAR},
+            </if>
+             <if test="applyModule != null" >
+                #{applyModule,jdbcType=VARCHAR},
+            </if>
+            <if test="nodeName != null" >
+                #{nodeName,jdbcType=VARCHAR},
+            </if>
+            <if test="nodeAlias != null" >
+                #{nodeAlias,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null" >
+                #{sort,jdbcType=TINYINT},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyUser != null" >
+                #{modifyUser,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.ymy.xxb.migrat.module.biz.produce.entity.InformNodeDO" >
+        update xx_inform_node
+        <set >
+            <if test="user != null" >
+                user = #{user,jdbcType=VARCHAR},
+            </if>
+            <if test="applyModule != null" >
+                apply_module = #{applyModule,jdbcType=VARCHAR},
+            </if>
+            <if test="nodeName != null" >
+                node_name = #{nodeName,jdbcType=VARCHAR},
+            </if>
+            <if test="nodeAlias != null" >
+                node_alias = #{nodeAlias,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null" >
+                sort = #{sort,jdbcType=TINYINT},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createUser != null" >
+                create_user = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyUser != null" >
+                modify_user = #{modifyUser,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+    <!--通知节点管理木块多对多关联查询-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT A.apply_module as apply_module,
+              A.node_name as node_name,
+              C.template_title as template_title,
+              A.sort as sort,
+              A.state as state
+         FROM xx_inform_node A
+	      LEFT JOIN xx_label_template B ON A.id = B.label_id
+	      LEFT JOIN xx_inform_template C ON C.id = B.temp_id
+        where 1=1 and A.state = 1 and C.state = 1
+    </select>
+
+    <!--条件查询通知节点名称-->
+    <select id="selectByNodeName" parameterType="String"  resultMap="BaseResultMap">
+        SELECT
+        id
+        FROM xx_inform_node
+        where 1=1 and state = 1
+            and rule_name=#{ruleName}
+            and sort =#{sort}
+    </select>
+
+    <update id="logicDelete" parameterType="java.lang.String">
+        update xx_inform_node set state=0 , modify_time=now() where id=#{id,jdbcType=VARCHAR}
+    </update>
+    
+</mapper>

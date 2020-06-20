@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymy.xxb.migrat.module.biz.produce.mapper.RoleTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.ymy.xxb.migrat.module.biz.produce.entity.BsRoleTempleDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="rule_id" property="ruleId" jdbcType="VARCHAR" />
+    <result column="temple_id" property="templeId" jdbcType="VARCHAR" />
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <resultMap id="UserTemplateMap" type="com.ymy.xxb.migrat.module.biz.produce.entity.UserTemplateDO" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+        <result column="send_node" property="sendNode" jdbcType="VARCHAR" />
+        <result column="template_title" property="templateTitle" jdbcType="VARCHAR" />
+        <result column="message_content" property="messageContent" jdbcType="VARCHAR" />
+        <result column="template_code" property="templateCode" jdbcType="VARCHAR" />
+        <result column="rule_name" property="ruleName" jdbcType="VARCHAR" />
+        <result column="rule_alias" property="ruleAlias" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+    id,role_id,rule_id,temple_id
+    </sql>
+
+    <select id="select" parameterType="map" resultType="com.ymy.xxb.migrat.module.biz.produce.entity.UserTemplateDO">
+        SELECT
+        F.username AS username,
+        A.role_name AS roleName,
+        C.send_node AS sendNode,
+        C.template_title AS templateTitle,
+        C.message_content AS messageContent,
+        C.template_code AS templateCode,
+        D.rule_name AS ruleName,
+        D.rule_alias AS ruleAlias
+        FROM co_bs_role A
+        LEFT JOIN co_bs_role_temple B ON A.id = B.role_id
+        LEFT JOIN xx_inform_template C ON B.temple_id = C.id
+        LEFT JOIN xx_group_rule D ON B.rule_id = D.id
+        LEFT JOIN co_bs_user_role E ON A.id = E.bs_role_id
+        LEFT JOIN co_bs_user F ON E.bs_user_id =F.id
+        where 1=1
+        <if test="username != null and username !=''" >
+            and F.username=#{username,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.ymy.xxb.migrat.module.biz.produce.entity.BsRoleTempleDO" >
+        insert into  co_bs_role_temple
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="roleId != null" >
+                role_id,
+            </if>
+            <if test="ruleId != null" >
+                rule_id,
+            </if>
+            <if test="templeId != null" >
+                temple_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null" >
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="ruleId != null" >
+                #{ruleId,jdbcType=VARCHAR},
+            </if>
+             <if test="templeId != null" >
+                #{templeId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <delete id="delete" parameterType="java.lang.String">
+  		DELETE FROM co_bs_role_temple where id=#{id,jdbcType=VARCHAR}
+  </delete>
+    
+</mapper>

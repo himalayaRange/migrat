@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymy.xxb.migrat.module.comyany.mapper.DictionaryMainMapper" >
+	
+    <resultMap id="BaseResultMap" type="com.ymy.xxb.migrat.module.comyany.entity.DictionaryMainDO" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+        <result column="category_code" property="categoryCode" jdbcType="VARCHAR" />
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+        <result column="memo" property="memo" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="TINYINT" />
+    </resultMap>
+    
+    <!-- 字典树返回Map -->
+    <resultMap id="BaseResultListMap" type="com.ymy.xxb.migrat.module.comyany.entity.DictionaryMainDO" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+        <result column="category_code" property="categoryCode" jdbcType="VARCHAR" />
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+        <result column="memo" property="memo" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="TINYINT" />
+        <collection property="list" column="detail_id" javaType="ArrayList" ofType="com.ymy.xxb.migrat.module.comyany.entity.DictionaryDetailDO">
+            <id column="detail_id" property="id" jdbcType="VARCHAR" />
+            <result column="mid" property="mid" jdbcType="VARCHAR" />
+            <result column="level" property="level" jdbcType="INTEGER" />
+            <result column="order_no" property="orderNo" jdbcType="INTEGER" />
+            <result column="code" property="code" jdbcType="VARCHAR" />
+            <result column="name" property="name" jdbcType="VARCHAR" />
+            <result column="state" property="state" jdbcType="TINYINT" />
+            <result column="memo" property="memo" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+
+	
+	<!-- 字典树返回Map VO -->
+    <resultMap id="BaseResultListMapVo" type="com.ymy.xxb.migrat.module.comyany.entity.DictionaryMainDO" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+        <result column="category_code" property="categoryCode" jdbcType="VARCHAR" />
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+        <result column="memo" property="memo" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="TINYINT" />
+        <collection property="list" column="detail_id" javaType="ArrayList" ofType="com.ymy.xxb.migrat.module.comyany.vo.DictionaryDetailVO">
+            <id column="detail_id" property="id" jdbcType="VARCHAR" />
+            <result column="mid" property="mid" jdbcType="VARCHAR" />
+            <result column="name" property="title" jdbcType="VARCHAR" />
+            <result column="dicType" property="type" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+    
+    <!-- 分页标签 -->
+    <sql id="table_page">
+        <if test="rowStart !=null  and  rowEnd !=null ">
+            <![CDATA[LIMIT #{rowStart},#{rowEnd}]]>
+        </if>
+    </sql>
+
+    <sql id="Base_Column_List" >
+     id, parent_id, category_code, category_name, memo, state
+    </sql>
+
+    <select id="select" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from co_dictionary_main
+        where 1=1
+        <if test="categoryCode != null and categoryCode !=''" >
+            and category_code=#{categoryCode,jdbcType=VARCHAR}
+        </if>
+        <if test="categoryName != null and categoryName !=''" >
+            and category_name=#{categoryName,jdbcType=VARCHAR}
+        </if>
+
+        <include refid="table_page" />
+    </select>
+
+    <select id="count" resultType="long" parameterType="map">
+        SELECT count(*)
+        from co_dictionary_main
+        where 1=1
+        <if test="categoryCode != null and categoryCode !=''" >
+            and category_code=#{categoryCode,jdbcType=VARCHAR}
+        </if>
+        <if test="categoryName != null and categoryName !=''" >
+            and category_name=#{categoryName,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.ymy.xxb.migrat.module.comyany.entity.DictionaryMainDO" >
+        insert into co_dictionary_main
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="parentId != null" >
+                parent_id,
+            </if>
+            <if test="categoryCode != null" >
+                category_code,
+            </if>
+            <if test="categoryName != null" >
+                category_name,
+            </if>
+            <if test="memo != null" >
+                memo,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null" >
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryCode != null" >
+                #{categoryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryName != null" >
+                #{categoryName,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null" >
+                #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=INTEGER},
+            </if>
+
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.ymy.xxb.migrat.module.comyany.entity.DictionaryMainDO" >
+        update co_dictionary_main
+        <set >
+            <if test="parentId != null" >
+                parent_id = #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryCode != null" >
+                category_code = #{categoryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="categoryName != null" >
+                category_name = #{categoryName,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null" >
+                memo = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from co_dictionary_main
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <update id="logicDelete" parameterType="java.lang.String">
+        update co_dictionary_main set state=0 where id=#{id,jdbcType=VARCHAR}
+    </update>
+
+   <!-- 字典树+ 字典详情list -->
+    <select id="selectDictionaryTreeList" resultMap="BaseResultListMapVo">
+        SELECT
+			cdm.id,
+			cdm.parent_id,
+			cdm.category_code,
+			cdm.category_name,
+			cdm.memo,
+			cdm.state,
+			cdd.id as detail_id,
+			cdd.mid,
+			cdd.`level`,
+			cdd.order_no,
+			cdd.`name`,
+			cdd.state,
+			cdd.memo,
+			<!-- dicType = 2 表示 是明细，兼容处理-->
+			case when cdd.id is NULL THEN NULL else '2' end AS dicType
+		FROM
+			co_dictionary_main cdm
+		LEFT JOIN co_dictionary_detail cdd ON cdm.id = cdd.mid and cdm.state = 1 and cdd.state =1
+		WHERE 1=1 
+		<if test="id != null and id !=''">
+			AND cdm.id = #{id,jdbcType=VARCHAR}
+		</if>
+		<if test="categoryCode != null and categoryCode !=''">
+			AND cdm.category_code = #{categoryCode,jdbcType=VARCHAR}
+		</if>
+    </select>
+   
+</mapper>

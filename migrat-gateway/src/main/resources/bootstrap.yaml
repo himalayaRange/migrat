@@ -1,0 +1,23 @@
+spring:
+   profiles:
+     active:
+   application:
+     name: nacos-migrat-gateway
+    
+   cloud:
+     nacos:
+       discovery:
+          register-enabled: true
+          server-addr: 192.168.12.119:8848
+          service: ${spring.application.name}
+          namespace: 410f8791-4d7e-439a-9114-4c5b8749a613
+       config:
+          server-addr: ${spring.cloud.nacos.discovery.server-addr}
+          file-extension: yaml
+          namespace: ${spring.cloud.nacos.discovery.namespace}
+          ext-config[0]:
+             data-id: nacos-migrat-gateway.yaml
+             refresh: true
+          ext-config[1]:
+             data-id: nacos-gateway-redis.yaml
+             refresh: true

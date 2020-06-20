@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ymy.xxb.migrat.auth.shiro.mapper.BsUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.ymy.xxb.migrat.auth.shiro.entity.BsUserRoleDO">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="bs_user_id" jdbcType="VARCHAR" property="bsUserId" />
+    <result column="bs_role_id" jdbcType="VARCHAR" property="bsRoleId" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId"/>
+  </resultMap>
+ 
+  <sql id="Base_Column_List">
+    id, bs_user_id, bs_role_id,tenant_id
+  </sql>
+  
+  <insert id="insert" parameterType="com.ymy.xxb.migrat.auth.shiro.entity.BsUserRoleDO">
+    insert into co_bs_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bsUserId != null">
+        bs_user_id,
+      </if>
+      <if test="bsRoleId != null">
+        bs_role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="bsUserId != null">
+        #{bsUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="bsRoleId != null">
+        #{bsRoleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 根据用户ID删除用户角色 -->
+  <delete id="removeUserRoleByUserId" parameterType="java.lang.String">
+  		DELETE FROM co_bs_user_role where bs_user_id=#{userId,jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- 根据角色ID删除用户角色 -->
+  <delete id="removeUserRoleByRoleId" parameterType="java.lang.String">
+  		DELETE FROM co_bs_user_role where bs_role_id=#{roleId,jdbcType=VARCHAR}
+  </delete>
+</mapper>

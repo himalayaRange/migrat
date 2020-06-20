@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ymy.xxb.migrat.auth.shiro.mapper.BsMenuMapper">
+  <resultMap id="BaseResultMap" type="com.ymy.xxb.migrat.auth.shiro.entity.BsMenuDO">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId"/>
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="perms" jdbcType="VARCHAR" property="perms" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="order_num" jdbcType="BIGINT" property="orderNum" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="en_visible" jdbcType="VARCHAR" property="enVisible" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modify_user" jdbcType="VARCHAR" property="modifyUser" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, pid, menu_name, url, perms,icon, type, order_num, description, en_visible, create_time, 
+    create_user, modify_time, modify_user,tenant_id
+  </sql>
+  
+  <!-- 分页标签 -->
+  <sql id="table_page">
+		<if test="rowStart !=null  and  rowEnd !=null ">
+			<![CDATA[LIMIT #{rowStart},#{rowEnd}]]>
+		</if>
+  </sql>
+  
+  <insert id="insert" parameterType="com.ymy.xxb.migrat.auth.shiro.entity.BsMenuDO">
+  	insert into co_bs_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="enVisible != null">
+        en_visible,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="modifyUser != null">
+        modify_user,
+      </if>
+      <if test="perms != null">
+        perms,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="enVisible != null">
+        #{enVisible,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null">
+        #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="perms != null">
+        #{perms,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.ymy.xxb.migrat.auth.shiro.entity.BsMenuDO" >
+	   update co_bs_menu
+	    <set>
+	      <if test="pid != null">
+	        pid = #{pid,jdbcType=VARCHAR},
+	      </if>
+	      <if test="menuName != null">
+	        menu_name = #{menuName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="url != null">
+	        url = #{url,jdbcType=VARCHAR},
+	      </if>
+	      <if test="icon != null">
+	        icon = #{icon,jdbcType=VARCHAR},
+	      </if>
+	      <if test="type != null">
+	        type = #{type,jdbcType=TINYINT},
+	      </if>
+	      <if test="orderNum != null">
+	        order_num = #{orderNum,jdbcType=BIGINT},
+	      </if>
+	      <if test="description != null">
+	        description = #{description,jdbcType=VARCHAR},
+	      </if>
+	      <if test="enVisible != null">
+	        en_visible = #{enVisible,jdbcType=VARCHAR},
+	      </if>
+	      <if test="createTime != null">
+	        create_time = #{createTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="createUser != null">
+	        create_user = #{createUser,jdbcType=VARCHAR},
+	      </if>
+	      <if test="modifyTime != null">
+	        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="modifyUser != null">
+	        modify_user = #{modifyUser,jdbcType=VARCHAR},
+	      </if>
+	      <if test="perms != null">
+	        perms = #{perms,jdbcType=LONGVARCHAR},
+	      </if>
+	    </set>
+	    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="select" parameterType="map" resultMap="BaseResultMap">
+        select
+  			<include refid="Base_Column_List"/>
+        from co_bs_menu
+        where 1=1
+          <if test="id != null">
+          	and id = #{id,jdbcType=VARCHAR}
+          </if>
+          <if test="pid != null">
+	        and pid = #{pid,jdbcType=BIGINT}
+	      </if>
+	      <if test="menuName != null and menuName !=''">
+	        and menu_name = #{menuName,jdbcType=VARCHAR}
+	      </if>
+	      <if test="url != null and url !=''">
+	        and url = #{url,jdbcType=VARCHAR}
+	      </if>
+	      <if test="icon != null">
+	        and icon = #{icon,jdbcType=VARCHAR}
+	      </if>
+	      <if test="type != null">
+	        and type = #{type,jdbcType=TINYINT}
+	      </if>
+	      <if test="orderNum != null">
+	        and order_num = #{orderNum,jdbcType=BIGINT}
+	      </if>
+	      <if test="description != null">
+	        and description = #{description,jdbcType=VARCHAR}
+	      </if>
+	      <if test="enVisible != null">
+	        and en_visible = #{enVisible,jdbcType=VARCHAR}
+	      </if>
+	      <if test="createTime != null">
+	        and create_time = #{createTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="createUser != null">
+	        and create_user = #{createUser,jdbcType=VARCHAR}
+	      </if>
+	      <if test="modifyTime != null">
+	        and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="modifyUser != null">
+	        and modify_user = #{modifyUser,jdbcType=VARCHAR}
+	      </if>
+	      <if test="perms != null">
+	        and perms = #{perms,jdbcType=LONGVARCHAR}
+	      </if>
+      	<include refid="table_page" />
+    </select>
+    
+    <select id="count" resultType="long" parameterType="map">
+		SELECT count(*)
+		from co_bs_menu
+        where 1=1
+          <if test="id != null">
+	        and id = #{id,jdbcType=VARCHAR}
+	      </if>
+	      <if test="pid != null">
+	        and pid = #{pid,jdbcType=VARCHAR}
+	      </if>
+	      <if test="menuName != null">
+	        and menu_name = #{menuName,jdbcType=VARCHAR}
+	      </if>
+	      <if test="url != null">
+	        and url = #{url,jdbcType=VARCHAR}
+	      </if>
+	      <if test="icon != null">
+	        and icon = #{icon,jdbcType=VARCHAR}
+	      </if>
+	      <if test="type != null">
+	        and type = #{type,jdbcType=TINYINT}
+	      </if>
+	      <if test="orderNum != null">
+	        and order_num = #{orderNum,jdbcType=BIGINT}
+	      </if>
+	      <if test="description != null">
+	        and description = #{description,jdbcType=VARCHAR}
+	      </if>
+	      <if test="enVisible != null">
+	        and en_visible = #{enVisible,jdbcType=VARCHAR}
+	      </if>
+	      <if test="createTime != null">
+	        and create_time = #{createTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="createUser != null">
+	        and create_user = #{createUser,jdbcType=VARCHAR}
+	      </if>
+	      <if test="modifyTime != null">
+	        and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+	      </if>
+	      <if test="modifyUser != null">
+	        and modify_user = #{modifyUser,jdbcType=VARCHAR}
+	      </if>
+	      <if test="perms != null">
+	        and perms = #{perms,jdbcType=LONGVARCHAR}
+	      </if>
+  </select>
+  
+  <!-- 获取用户菜单，不包括按钮 -->
+  <select id="findUserMenus" parameterType="map" resultMap="BaseResultMap">
+  		  SELECT
+            m.*
+        FROM
+            co_bs_menu m
+        WHERE 1=1
+          <if test="includeBtn == 1">
+	        AND m.type &lt;&gt; 1
+	      </if>
+	      <if test="includeBtn ==2">
+	      	
+	      </if>
+	       <choose>
+            	<when test="level == 1">
+            		<!-- 超级管理员查询所有菜单 -->
+            	</when>
+            	<otherwise>
+            		<!-- 非超级管理员只查询当前用户菜单 -->
+            		 AND m.id IN (
+		            SELECT DISTINCT
+		                rm.bs_menu_id
+		            FROM
+		                co_bs_role_menu rm
+		            LEFT JOIN co_bs_role r ON (rm.bs_role_id = r.id)
+		            LEFT JOIN co_bs_user_role ur ON (ur.bs_role_id = r.id)
+		            LEFT JOIN co_bs_user u ON (u.id = ur.bs_user_id)
+		            WHERE 1=1
+            		AND  u.id = #{id,jdbcType=VARCHAR}  )
+            	</otherwise>
+            </choose>
+        ORDER BY
+        m.order_num;
+  </select>
+  
+  <!-- 获取角色权限,包括菜单和按钮 -->
+  <select id="getRolePerms" resultMap="BaseResultMap"  parameterType="java.lang.String">
+  		SELECT
+            m.*
+        FROM
+            co_bs_menu m
+        WHERE
+             1=1
+        AND m.id IN (
+            SELECT DISTINCT
+                rm.bs_menu_id
+            FROM
+                co_bs_role_menu rm
+            LEFT JOIN co_bs_role r ON (rm.bs_role_id = r.id)
+            WHERE
+               r.id=#{roleId,jdbcType=VARCHAR}
+        )
+        ORDER BY
+          m.order_num
+  </select>
+  
+  <!-- ID查询菜单 -->
+  <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	 select
+  			<include refid="Base_Column_List"/>
+        from co_bs_menu
+       where id=#{id,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- ID物理删除菜单 -->
+  <delete id="physicalDelete" parameterType="java.lang.String">
+  	 delete from co_bs_menu where id=#{id,jdbcType=VARCHAR}
+  </delete>
+  
+</mapper>

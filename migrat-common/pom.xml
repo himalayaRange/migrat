@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ymy.xxb</groupId>
+		<artifactId>migrat</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>migrat-common</artifactId>
+	<name>migrat common project jar</name>
+
+	<dependencies>
+		<!-- 使用lettuce客户端操作Redis -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+	        
+	    <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+	
+		<dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        
+        <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
+        
+        <dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
+		
+       	<dependency>
+       		<groupId>org.crazycake</groupId>
+       		<artifactId>shiro-redis</artifactId>
+       	</dependency>
+       	
+       	<dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+      	</dependency>
+        
+        <!-- redis依赖commons-pool2 -->
+        <dependency>
+        	<groupId>org.apache.commons</groupId>
+           	<artifactId>commons-pool2</artifactId>
+        </dependency>
+        
+        <dependency>
+        	<groupId>com.fasterxml.jackson.core</groupId>
+           	<artifactId>jackson-databind</artifactId>
+        </dependency>
+        
+        <dependency>
+       		<groupId>commons-codec</groupId>
+       		<artifactId>commons-codec</artifactId>
+       	</dependency>
+        	
+        <dependency>
+        	<groupId>com.fasterxml.jackson.core</groupId>
+        	<artifactId>jackson-annotations</artifactId>
+        </dependency>
+	    
+	    <dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
+			
+        <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>	
+		</dependency>
+		
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		</dependency>
+			
+		<dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+		</dependency>
+		
+		<dependency>
+       		<groupId>javax.validation</groupId>
+       		<artifactId>validation-api</artifactId>
+       	</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,20 @@
+server:
+   port: 9008 
+
+swagger:
+   open: false
+   
+zuul:
+   routes:
+     website:
+        path: /gateway/website/** 
+        sensitive-headers: "*"
+        url: http://172.16.3.17:8008/
+     tenant:
+        path: /gateway/tenant/**
+        sensitive-headers: "*"
+        url: http://172.16.3.17:7008/
+     bizProduce:  
+        path: /gateway/bizProduce/**
+        sensitive-headers: "*"
+        url: http://172.16.3.17:10008/   

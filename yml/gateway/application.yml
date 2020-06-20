@@ -1,0 +1,33 @@
+server:
+   port: 9002 
+
+swagger:
+   open: true
+   
+spring:
+   application:
+      name: migrat-gateway
+   cloud:
+      gateway:
+         discovery:
+            locator:
+               enabled: true
+         routes:
+         - id: website
+           uri: http://172.16.3.17:8002/
+           predicates:
+             - Path=/gateway/website/**
+           filters:
+             - RewritePath=/gateway/website/(?<segment>.*), /$\{segment}
+         - id: tenant
+           uri: http://172.16.3.17:7002/
+           predicates:
+             - Path=/gateway/tenant/**
+           filters:
+              - RewritePath=/gateway/tenant/(?<segment>.*), /$\{segment}
+         - id: bizProduce
+           uri: http://172.16.3.17:10002/
+           predicates:
+             - Path=/gateway/bizProduce/**
+           filters:
+              - RewritePath=/gateway/bizProduce/(?<segment>.*), /$\{segment}

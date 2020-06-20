@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ymy.xxb</groupId>
+		<artifactId>migrat</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>migrat-job</artifactId>
+	<name>MIGRAT 分布式作业任务</name>
+	
+	<dependencies>
+		<!-- coordinator registry -->
+		<dependency>
+			<groupId>com.ymy.xxb</groupId>
+			<artifactId>migrat-coordinator-register</artifactId>
+		</dependency>
+		
+		<!-- xxl job -->
+		<dependency>
+			<groupId>com.xuxueli</groupId>
+			<artifactId>xxl-job-core</artifactId>
+		</dependency>
+			
+		<!-- Nacos Discovery -->
+		<dependency>
+		     <groupId>com.alibaba.cloud</groupId>
+		     <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		 </dependency>
+		
+		<!--Nacos Config-->
+		<dependency>
+		     <groupId>com.alibaba.cloud</groupId>
+		     <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		 </dependency>
+		
+		<!-- 热启动，修改会自动重启 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion> 
+					<groupId>org.springframework.boot</groupId> 
+					<artifactId>spring-boot-starter-tomcat</artifactId> 
+			    </exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency> 		
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName>MIGRAT-JOB-RELEASE.jar</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.ymy.xxb.migrat.job.XxlJobApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                        	<!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

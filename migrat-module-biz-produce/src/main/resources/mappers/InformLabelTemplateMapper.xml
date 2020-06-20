@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymy.xxb.migrat.module.biz.produce.mapper.InformLabelTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.ymy.xxb.migrat.module.biz.produce.entity.InformLabelTemplateDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="label_id" property="labelId" jdbcType="VARCHAR" />
+    <result column="temp_id" property="tempId" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <!-- 分页标签 -->
+    <sql id="table_page">
+        <if test="rowStart !=null  and  rowEnd !=null ">
+            <![CDATA[LIMIT #{rowStart},#{rowEnd}]]>
+        </if>
+    </sql>
+
+    <sql id="Base_Column_List" >
+    id,label_id,temp_id
+    </sql>
+    <insert id="insert" parameterType="com.ymy.xxb.migrat.module.biz.produce.entity.InformLabelTemplateDO" >
+        insert into  xx_label_template
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="labelId != null" >
+                label_id,
+            </if>
+            <if test="tempId != null" >
+                temp_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="labelId != null" >
+                #{labelId,jdbcType=VARCHAR},
+            </if>
+             <if test="tempId != null" >
+                #{tempId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="findByLabelId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xx_label_template
+        where label_id =#{labelId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findByTempId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from migrat.xx_label_template
+        where temp_id =#{tempId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteById" parameterType="java.lang.String">
+  		DELETE FROM xx_label_template where id=#{id,jdbcType=VARCHAR}
+  </delete>
+    
+</mapper>

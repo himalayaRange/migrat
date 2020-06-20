@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="telephone=no" name="format-detection"/>
+<meta content="email=no" name="format-detection"/>
+<title>Migrat Payment Demo</title>
+<style>
+	html,body{width:100%;max-width: 500px;margin: 0 auto;padding:0;}
+	.explain{color:#999;margin-bottom:50px;font-size:20px;}
+	.content{padding:0 10px;}
+	.alipayTitle{font-size:16px;background:#f5f5f5;height:27px;line-height:27px;color:#666;padding-left:8px;}
+	.content{clear:both;}
+	.content a{display:block;font-size:14px;float:left;width:30%;margin-left:2.4%;height:32px;line-height:32px;border-radius:3px;text-decoration: none;text-align:center;margin-top:15px;color:#333;}
+	.split{height:5px;margin:30px 0;clear: both;}
+	.alipay a{border: 1px solid #00BFFF;}
+	.wxpay a{border: 1px solid #34ed2c;}
+	.alipay .alipayTitle{border-left:4px solid #00BFFF;}
+	.wxpay .alipayTitle{border-left:4px solid #34ed2c;}
+</style>
+</head>
+<body >
+	<div class="explain" align="center">欢迎体验支付宝支付、微信支付</div>
+	<div class="content alipay">
+		<div class="alipayTitle">支付宝平台:</div>
+		<a th:href="@{/authenticationApi/alipay/pcPay}" target="_blank">网站支付</a>
+		<a th:href="@{/authenticationApi/alipay/wapPay}" target="_blank">Wap支付</a>
+		<a th:href="@{/authenticationApi/alipay/appPay}" target="_blank">App支付</a>
+		<a th:href="@{/authenticationApi/alipay/tradePay?auth_code=288263373113826341}" target="_blank">条形码支付</a>
+		<a th:href="@{/authenticationApi/alipay/tradePrecreatePay}" target="_blank">扫码支付</a>
+	</div>
+</body>
+</html>

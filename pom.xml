@@ -1,0 +1,635 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ymy.xxb</groupId>
+	<artifactId>migrat</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>parent project pom</name>
+	<modules>
+		<module>migrat-common</module>
+		<module>migrat-configuration</module>
+		<module>migrat-sso-server</module>
+		<module>migrat-module-comyany</module>
+		<module>migrat-auth-shiro</module>
+		<module>migrat-module-website</module>
+		<module>migrat-gateway</module>
+		<module>migrat-zuul</module>
+		<module>migrat-module-biz-produce</module>
+		<module>migrat-monitor-dashboard</module>
+		<module>migrat-coordinator-register</module>
+		<module>migrat-monitor-skywalking</module>
+		<module>migrat-job</module>
+	</modules> 
+	
+	<organization>
+		<name>YMY.XXB</name>
+		<url>http://www.ysfg.com.cn/</url>
+	</organization>
+	
+	<licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <developers>
+    	<developer>
+    		<id>wy</id>
+            <name>wangyi</name>
+            <email>13127636621@163.com</email>
+            <organization>free</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+    	</developer>
+    	<developer>
+            <id>yl</id>
+            <name>yanglei</name>
+            <email>15369177691@163.com</email>
+            <organization>free</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
+    <!-- SpringBoot版本为2.0.X,对应的Alibaba Cloud版本为 2.0.X
+    wiki版本: https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E
+    -->
+    <parent>
+    	<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+    </parent>
+    
+    <properties>
+    	<skipTests>true</skipTests>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<fastjson.version>1.2.70</fastjson.version>
+		<validation.version>2.0.1.Final</validation.version>
+		<servlet.version>2.5</servlet.version>
+		<okhttp.version>2.7.5</okhttp.version>
+		<okhttp3.version>3.9.1</okhttp3.version>
+		<okio.version>1.13.0</okio.version> 
+		<commons.logging.version>1.2</commons.logging.version>
+		<commons.codec.version>1.12</commons.codec.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons.io.version>2.6</commons.io.version>
+		<google.guava>27.0-jre</google.guava>
+		<jwt.version>0.7.0</jwt.version>
+		<jwt.auth>3.2.0</jwt.auth>
+		<lombok.version>1.16.20</lombok.version>
+		<mysql.version>8.0.11</mysql.version>
+		<mockito.version>2.21.0</mockito.version>
+		<github.pagehelper.version>1.2.5</github.pagehelper.version>
+		<alibaba.druid.version>1.1.10</alibaba.druid.version>
+		<jsoup.version>1.11.3</jsoup.version>
+		<hessian.version>4.0.38</hessian.version>
+        <protostuff.version>1.0.8</protostuff.version>
+        <kryo.version>4.0.0</kryo.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
+        <zkclient.version>0.10</zkclient.version>
+		<mybatis.version>1.3.0</mybatis.version>
+		<disruptor.version>3.4.2</disruptor.version>
+		<reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+		<easyexcel.version>1.1.2-beat1</easyexcel.version>
+		<netty.version>4.1.16.Final</netty.version>
+		<oracle.ojdbc.version>12.1.0.1-atlassian-hosted</oracle.ojdbc.version>
+		<liferay.version>1.2.2.LIFERAY-PATCHED-1</liferay.version>
+		<aspectj.version>1.9.4</aspectj.version>
+		<swagger.version>2.7.0</swagger.version>
+		<security.oauth.version>2.2.1.RELEASE</security.oauth.version>
+		<security.jwt.version>1.0.9.RELEASE</security.jwt.version>
+		<social.security.version>1.1.6.RELEASE</social.security.version>
+		<shiro.spring.version>1.4.0</shiro.spring.version>
+		<shiro.core.version>1.4.0</shiro.core.version>
+		<shiro.redis.version>3.0.0</shiro.redis.version>
+		<captcha.version>1.6.2</captcha.version>
+		<jackjson.verson>2.9.8</jackjson.verson>
+		<jsqlparser.version>2.1</jsqlparser.version>
+		<security.oauth2.version>2.0.3.RELEASE</security.oauth2.version>
+		<lionsoul.version>1.7</lionsoul.version>
+		<codec.version>1.10</codec.version>
+		<javassist.version>3.25.0-GA</javassist.version>
+		<buddy.version>1.10.2</buddy.version>
+		<zxing.version>3.2.1</zxing.version>
+		<redisson.version>3.11.2</redisson.version>
+		<alipay.version>3.3.49.ALL</alipay.version>
+		<xxl.job.version>2.2.0</xxl.job.version>
+		<zuul.ratelimit.version>2.2.7.RELEASE</zuul.ratelimit.version>
+		<transmittableThreadLocal.version>2.10.2</transmittableThreadLocal.version>
+		<!-- Nacos Client 版本 -->
+		<nacos.client.version>1.1.4</nacos.client.version>
+		<!-- Seata 版本 1.0.0-->
+		<seata.version>2.2.0.RELEASE</seata.version>
+		<!-- Alibaba Cloud Nacos 版本 包含了nacos-client，此版本的客户端为1.1.4  -->
+		<alibaba.cloud.version>2.0.1.RELEASE</alibaba.cloud.version>
+		<!-- springboot版本为2.0.3.RELEASE,对应的cloud版本为Finchley.SR4 -->
+		<spring-cloud.version>Finchley.SR4</spring-cloud.version>
+    </properties>
+    
+    <!-- 网关Zuul、Gateway、模块层模块不作为依赖层不定义project.version -->
+    <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+				<groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+			</dependency>
+			
+    		<dependency>
+    			<groupId>com.ymy.xxb</groupId>
+    			<artifactId>migrat-common</artifactId>
+    			<version>${project.version}</version>
+    		</dependency>
+    		
+    		<dependency>
+    			<groupId>com.ymy.xxb</groupId>
+    			<artifactId>migrat-configuration</artifactId>
+    			<version>${project.version}</version>
+    		</dependency>
+    		
+    		<dependency>
+    			<groupId>com.ymy.xxb</groupId>
+    			<artifactId>migrat-sso-server</artifactId>
+    			<version>${project.version}</version>
+    		</dependency>
+    		
+    		<dependency>
+    			<groupId>com.ymy.xxb</groupId>
+    			<artifactId>migrat-auth-shiro</artifactId>
+    			<version>${project.version}</version>
+    		</dependency>
+    		
+    		<dependency>
+    			<groupId>com.ymy.xxb</groupId>
+    			<artifactId>migrat-coordinator-register</artifactId>
+    			<version>${project.version}</version>
+    		</dependency>
+    		
+			<dependency>
+	            <groupId>org.projectlombok</groupId>
+	            <artifactId>lombok</artifactId>
+	            <version>${lombok.version}</version>
+	        </dependency>
+	        
+			<dependency>
+			    <groupId>org.mockito</groupId>
+			    <artifactId>mockito-core</artifactId>
+			    <version>${mockito.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${github.pagehelper.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${alibaba.druid.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			
+			<!-- 
+			fastjson需要大于1.2.68,否则存在反序列化漏洞 
+			https://github.com/alibaba/fastjson/wiki/security_update_20200601
+			-->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.google.guava</groupId>
+			    <artifactId>guava</artifactId>
+			    <version>${google.guava}</version>
+			</dependency>
+	
+			<dependency>
+				<groupId>com.squareup.okhttp</groupId>
+				<artifactId>okhttp</artifactId>
+				<version>${okhttp.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.squareup.okhttp3</groupId>
+				<artifactId>okhttp</artifactId>
+				<version>${okhttp3.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.squareup.okio</groupId>
+				<artifactId>okio</artifactId>
+				<version>${okio.version}</version>
+				<scope>provided</scope>
+			</dependency>
+	
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons.logging.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>commons-io</groupId>
+			    <artifactId>commons-io</artifactId>
+			    <version>${commons.io.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons.codec.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>			
+			</dependency>
+			
+			<dependency>
+				<groupId>net.bytebuddy</groupId>
+				<artifactId>btye-buddy</artifactId>
+				<version>${buddy.version}</version>
+			</dependency>
+			
+			<dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo-shaded</artifactId>
+                <version>${kryo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.dyuproject.protostuff</groupId>
+                <artifactId>protostuff-core</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.dyuproject.protostuff</groupId>
+                <artifactId>protostuff-runtime</artifactId>
+                <version>${protostuff.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.101tec</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.auth0</groupId>
+			    <artifactId>java-jwt</artifactId>
+			    <version>${jwt.auth}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.jsoup</groupId>
+	    		<artifactId>jsoup</artifactId>
+	    		<version>${jsoup.version}</version>
+			</dependency>
+			
+			<!-- disruptor -->
+			<dependency>
+			    <groupId>com.lmax</groupId>
+			    <artifactId>disruptor</artifactId>
+			    <version>${disruptor.version}</version>
+			</dependency>
+			
+			<dependency>
+				 <groupId>com.alibaba</groupId>
+			     <artifactId>easyexcel</artifactId>
+			     <version>${easyexcel.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.liferay</groupId>
+			    <artifactId>org.apache.commons.fileupload</artifactId>
+			    <version>${liferay.version}</version>
+			</dependency>
+			
+			<!-- 线程池之间上线文的传递 -->
+			<dependency>
+			    <groupId>com.alibaba</groupId>
+			    <artifactId>transmittable-thread-local</artifactId>
+			    <version>${transmittableThreadLocal.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.oracle</groupId>
+			    <artifactId>ojdbc6</artifactId>
+			    <version>${oracle.ojdbc.version}</version>
+			</dependency>
+			
+			<dependency>
+		        <groupId>io.netty</groupId>
+		        <artifactId>netty-all</artifactId>
+		        <version>${netty.version}</version>
+		    </dependency>
+		    
+		    <dependency>
+                <groupId>org.projectreactor</groupId>
+                <artifactId>reactor-spring</artifactId>
+                <version>${reactor-spring.version}</version>
+            </dependency>
+            
+			<dependency>
+			    <groupId>org.aspectj</groupId>
+			    <artifactId>aspectjweaver</artifactId>
+			    <version>${aspectj.version}</version>
+			</dependency>
+            
+            <dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			
+			 <dependency>
+	            <groupId>org.springframework.security.oauth</groupId>
+	            <artifactId>spring-security-oauth2</artifactId>
+	            <version>${security.oauth.version}</version>
+	        </dependency>
+        
+	        <dependency>
+	            <groupId>org.springframework.security</groupId>
+	            <artifactId>spring-security-jwt</artifactId>
+	            <version>${security.jwt.version}</version>
+	        </dependency>
+			
+			<dependency>
+	            <groupId>org.springframework.social</groupId>
+	            <artifactId>spring-social-config</artifactId>
+	            <version>${social.security.version}</version>
+	        </dependency>
+        
+	        <dependency>
+	            <groupId>org.springframework.social</groupId>
+	            <artifactId>spring-social-core</artifactId>
+	            <version>${social.security.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+	            <groupId>org.springframework.social</groupId>
+	            <artifactId>spring-social-security</artifactId>
+	            <version>${social.security.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+	            <groupId>org.springframework.social</groupId>
+	            <artifactId>spring-social-web</artifactId>
+	            <version>${social.security.version}</version>
+	        </dependency>
+	       
+	        <dependency>
+			    <groupId>org.springframework.security.oauth.boot</groupId>
+			    <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+			    <version>${security.oauth2.version}</version>
+			</dependency>
+			
+			<!-- shiro and spring -->
+			<dependency>
+	            <groupId>org.apache.shiro</groupId>
+	            <artifactId>shiro-spring</artifactId>
+	            <version>${shiro.spring.version}</version>
+       	   </dependency>
+        
+            <!-- shiro core -->
+        	<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.core.version}</version>      	
+        	</dependency>
+        	
+        	<!-- shiro and redis  整合sessionDAO-->
+        	<dependency>
+        		<groupId>org.crazycake</groupId>
+        		<artifactId>shiro-redis</artifactId>
+        		<version>${shiro.redis.version}</version>
+        	</dependency>
+        	
+        	 <!-- 验证码生成插件 -->
+	        <dependency>
+	            <groupId>com.github.whvcse</groupId>
+	            <artifactId>easy-captcha</artifactId>
+	            <version>${captcha.version}</version>
+	        </dependency>
+	        
+			<dependency>
+			    <groupId>com.github.jsqlparser</groupId>
+			    <artifactId>jsqlparser</artifactId>
+			    <version>${jsqlparser.version}</version>
+			</dependency>
+	        
+	        <dependency>
+	        	<groupId>com.fasterxml.jackson.core</groupId>
+            	<artifactId>jackson-databind</artifactId>
+            	<version>${jackson.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+	        	<groupId>com.fasterxml.jackson.core</groupId>
+	        	<artifactId>jackson-annotations</artifactId>
+	        	<version>${jackson.version}</version>
+	        </dependency>
+	        
+	        <!-- com.sun.tools.1.8.0 -->
+        	<dependency>
+	            <groupId>com.sun</groupId>
+	            <artifactId>tools</artifactId>
+	            <version>1.8.0</version>
+			</dependency>
+			
+			<!-- IP定位插件 -->
+	        <dependency>
+	            <groupId>org.lionsoul</groupId>
+	            <artifactId>ip2region</artifactId>
+	            <version>${lionsoul.version}</version>
+	        </dependency>
+        	
+        	<dependency>
+        		<groupId>commons-codec</groupId>
+        		<artifactId>commons-codec</artifactId>
+        		<version>${codec.version}</version>
+        	</dependency>
+        	
+        	<dependency>
+        		<groupId>javax.validation</groupId>
+        		<artifactId>validation-api</artifactId>
+        		<version>${validation.version}</version>
+        	</dependency>
+        	
+	        <!-- Nacos Discovery -->
+        	<dependency>
+			     <groupId>com.alibaba.cloud</groupId>
+			     <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			     <version>${alibaba.cloud.version}</version>
+			 </dependency>
+        	
+        	<!--Nacos Config-->
+			<dependency>
+			     <groupId>com.alibaba.cloud</groupId>
+			     <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			     <version>${alibaba.cloud.version}</version>
+			 </dependency>
+			 
+			 <!-- Seata 默认版本 0.9.0, 升级到1.0.0
+			 低版本的spring-cloud-alibaba-seata只能配合seata-all使用
+			 高版本的spring-cloud-alibaba-seata只能配置seata-spring-boot-starter
+			 以2.2.0-RELEASE为分界点
+			 -->
+			 <dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+				<version>${seata.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>seata-all</artifactId>
+						<groupId>io.seata</groupId>
+					</exclusion>
+				</exclusions>	
+			 </dependency>
+			 
+			 <!-- 只需依赖seata-spring-boot-starter -->
+			 <dependency>
+			 	<groupId>io.seata</groupId>
+			 	<artifactId>seata-all</artifactId>
+              	<version>1.0.0</version>
+			 </dependency>
+ 			
+ 			<dependency>
+ 				 <groupId>com.marcosbarbero.cloud</groupId>
+			     <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+			     <version>${zuul.ratelimit.version}</version>
+ 			</dependency>
+ 			
+ 			<!-- Alipay -->
+ 			<dependency>
+	            <groupId>com.alipay.sdk</groupId>
+	            <artifactId>alipay-sdk-java</artifactId>
+	            <version>${alipay.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>${zxing.version}</version>
+			</dependency>
+			
+			<!-- redisson 和 springboot 集成包，用以支持yml-->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson-spring-boot-starter</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+			
+			<!-- xxl job -->
+			<dependency>
+				<groupId>com.xuxueli</groupId>
+				<artifactId>xxl-job-core</artifactId>
+				<version>${xxl.job.version}</version>
+			</dependency>
+    	</dependencies>
+    </dependencyManagement>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+            	 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

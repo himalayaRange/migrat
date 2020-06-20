@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ymy.xxb</groupId>
+		<artifactId>migrat</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>migrat-gateway</artifactId>
+	<name>基于spring cloud gateway 网关实现</name>
+	<description>性能会高于zuul，采用非阻塞式</description>
+	
+	<properties>
+		<gateway.swagger.version>2.9.2</gateway.swagger.version>
+	</properties>
+	
+	<dependencies>
+		<!-- Migrat Configuration -->
+		 <dependency>
+        	<groupId>com.ymy.xxb</groupId>
+			<artifactId>migrat-configuration</artifactId>
+        </dependency>
+        
+		<!--Nacos Config-->
+		<dependency>
+		     <groupId>com.alibaba.cloud</groupId>
+		     <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		 </dependency>
+	    
+	    <!-- Spring Gateway -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+		
+		<!-- Netflix Ribbon -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+		</dependency>
+		
+		<!-- Netflix Hystrix -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>	
+		</dependency>
+        
+        <!-- Redis Reactive -->
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
+        
+        <!-- 项目基于swagger版本2.7.0开发，此处2.9.2是为了兼容springCloud gateway需要升级到2.9.2 -->
+        <dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${gateway.swagger.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${gateway.swagger.version}</version>
+		</dependency>
+			
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        
+         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+	</dependencies>
+
+	 <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.ymy.xxb.migrat.gateway.MigratGatewayApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                        	<!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

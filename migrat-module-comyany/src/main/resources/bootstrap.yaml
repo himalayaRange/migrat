@@ -1,0 +1,31 @@
+spring:
+   profiles:
+      active:
+   application:
+      name: nacos-migrat-module-company
+    
+   cloud:
+     nacos:
+       discovery:
+          server-addr: 192.168.12.119:8848
+          service: ${spring.application.name}
+          namespace: 700c7f6d-ca9e-431d-b1ce-24906ae8a4f5
+       config:
+          namespace: ${spring.cloud.nacos.discovery.namespace}
+          server-addr: ${spring.cloud.nacos.discovery.server-addr}
+          file-extension: yaml
+          ext-config[0]:
+             data-id: nacos-migrat-module-company.yaml
+             refresh: true
+          ext-config[1]:
+             data-id: nacos-migrat-redis-sentinel.yaml
+             refresh: true
+          ext-config[2]:
+             data-id: nacos-migrat-datasource.yaml
+             refresh: true
+          ext-config[3]:
+             data-id: migrat.properties
+             refresh: true
+          #ext-config[4]:
+          #   data-id: redisson-sentinel.yaml
+          #   refresh: true

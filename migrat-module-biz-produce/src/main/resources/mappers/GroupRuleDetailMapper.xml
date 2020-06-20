@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ymy.xxb.migrat.module.biz.produce.mapper.GroupRuleDetailMapper" >
+  <resultMap id="ResultMap" type="com.ymy.xxb.migrat.module.biz.produce.entity.GroupRuleDetailDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="rid" property="rid" jdbcType="VARCHAR" />
+    <result column="dic_mid" property="dicMid" jdbcType="VARCHAR" />
+    <result column="dic_detail_id" property="dicDetailId" jdbcType="VARCHAR" />
+    <result column="filter" property="filter" jdbcType="VARCHAR" />
+    <result column="set_condition" property="setCondition" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="BaseColumn" >
+    id, rid, dic_mid, dic_detail_id, filter, set_condition, state,tenant_id
+  </sql>
+  
+  <select id="findById" resultMap="ResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="BaseColumn" />
+    from xx_group_rule_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="logicDelete" parameterType="java.lang.String" >
+    delete from xx_group_rule_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="deleteMxByRid" parameterType="java.lang.String" >
+    delete from xx_group_rule_detail
+    where rid = #{rid,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.ymy.xxb.migrat.module.biz.produce.entity.GroupRuleDetailDO" >
+    insert into xx_group_rule_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null and id != '' " >
+        id,
+      </if>
+      <if test="rid != null and rid != '' " >
+        rid,
+      </if>
+      <if test="dicMid != null and dicMid != '' " >
+        dic_mid,
+      </if>
+      <if test="dicDetailId != null and dicDetailId != '' " >
+        dic_detail_id,
+      </if>
+      <if test="filter != null and filter != '' " >
+        filter,
+      </if>
+      <if test="setCondition != null and setCondition != '' " >
+        set_condition,
+      </if>
+      <if test="state != null and state != '' " >
+        state,
+      </if>
+      <if test="tenantId != null and tenantId !='' ">
+      	tenant_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null and id != '' " >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rid != null and rid != '' " >
+        #{rid,jdbcType=VARCHAR},
+      </if>
+      <if test="dicMid != null and dicMid != '' " >
+        #{dicMid,jdbcType=VARCHAR},
+      </if>
+      <if test="dicDetailId != null and dicDetailId != '' " >
+        #{dicDetailId,jdbcType=VARCHAR},
+      </if>
+      <if test="filter != null and filter != '' " >
+        #{filter,jdbcType=VARCHAR},
+      </if>
+      <if test="setCondition != null and setCondition != '' " >
+        #{setCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null and state != '' " >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="tenantId != null and tenantId !='' ">
+      	#{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.ymy.xxb.migrat.module.biz.produce.entity.GroupRuleDetailDO" >
+    update xx_group_rule_detail
+    <set >
+      <if test="rid != null and rid != ''" >
+        rid = #{rid,jdbcType=VARCHAR},
+      </if>
+      <if test="dicMid != null and dicMid != ''" >
+        dic_mid = #{dicMid,jdbcType=VARCHAR},
+      </if>
+      <if test="dicDetailId != null and dicDetailId != ''" >
+        dic_detail_id = #{dicDetailId,jdbcType=VARCHAR},
+      </if>
+      <if test="filter != null and filter != ''" >
+        filter = #{filter,jdbcType=VARCHAR},
+      </if>
+      <if test="setCondition != null and setCondition != ''" >
+        set_condition = #{setCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null and state != ''" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="tenantId != null and tenantId !='' ">
+      	tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="count" resultType="java.lang.Integer" >
+    select count(1) from xx_group_rule_detail
+  </select>
+  
+  <select id="select" resultType="java.util.HashMap" parameterType="java.util.Map" >
+    select 
+    <include refid="BaseColumn" />
+    from xx_group_rule_detail where 1=1 limit #{page_no,jdbcType=INTEGER},#{page_count,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findDetaiListByPid" parameterType="string" resultMap="ResultMap">
+  	select 
+    <include refid="BaseColumn" />
+    from xx_group_rule_detail 
+    where 1=1 and rid =  #{rid,jdbcType=VARCHAR}
+  </select>
+</mapper>

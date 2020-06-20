@@ -1,0 +1,19 @@
+spring:
+   profiles:
+      active:
+   application:
+      name: migrat-job-executor
+    
+   cloud:
+     nacos:
+       discovery:
+          server-addr: 192.168.12.119:8848
+          service: ${spring.application.name}
+          namespace: 700c7f6d-ca9e-431d-b1ce-24906ae8a4f5
+       config:
+          namespace: ${spring.cloud.nacos.discovery.namespace}
+          server-addr: ${spring.cloud.nacos.discovery.server-addr}
+          file-extension: yaml
+          ext-config[0]:
+             data-id: nacos-migrat-job.yaml
+             refresh: true

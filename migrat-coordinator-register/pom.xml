@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ymy.xxb</groupId>
+		<artifactId>migrat</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>migrat-coordinator-register</artifactId>
+	<name>MicroService Coodingator Register</name>
+	<description>微服务注册中心，注册到这里的服务可被继承的单点服务调用,方便统一管理</description>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.ymy.xxb</groupId>
+			<artifactId>migrat-common</artifactId>
+		</dependency>
+		
+		<!-- openfeign在feign基础上支持了SpringMvc注解 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>
