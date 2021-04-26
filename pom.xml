@@ -79,7 +79,7 @@
 		<commons.logging.version>1.2</commons.logging.version>
 		<commons.codec.version>1.12</commons.codec.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
-		<commons.io.version>2.6</commons.io.version>
+		<commons.io.version>2.7</commons.io.version>
 		<google.guava>27.0-jre</google.guava>
 		<jwt.version>0.7.0</jwt.version>
 		<jwt.auth>3.2.0</jwt.auth>
