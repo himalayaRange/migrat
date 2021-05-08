@@ -107,7 +107,7 @@
 		<security.jwt.version>1.0.9.RELEASE</security.jwt.version>
 		<social.security.version>1.1.6.RELEASE</social.security.version>
 		<shiro.spring.version>1.4.0</shiro.spring.version>
-		<shiro.core.version>1.4.0</shiro.core.version>
+		<shiro.core.version>1.6.0</shiro.core.version>
 		<shiro.redis.version>3.0.0</shiro.redis.version>
 		<captcha.version>1.6.2</captcha.version>
 		<jackjson.verson>2.9.8</jackjson.verson>
