@@ -84,7 +84,7 @@
 		<jwt.version>0.7.0</jwt.version>
 		<jwt.auth>3.2.0</jwt.auth>
 		<lombok.version>1.16.20</lombok.version>
-		<mysql.version>8.0.11</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 		<mockito.version>2.21.0</mockito.version>
 		<github.pagehelper.version>1.2.5</github.pagehelper.version>
 		<alibaba.druid.version>1.1.10</alibaba.druid.version>
