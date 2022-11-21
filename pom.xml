@@ -120,7 +120,7 @@
 		<zxing.version>3.2.1</zxing.version>
 		<redisson.version>3.11.2</redisson.version>
 		<alipay.version>3.3.49.ALL</alipay.version>
-		<xxl.job.version>2.2.0</xxl.job.version>
+		<xxl.job.version>2.3.1</xxl.job.version>
 		<zuul.ratelimit.version>2.2.7.RELEASE</zuul.ratelimit.version>
 		<transmittableThreadLocal.version>2.10.2</transmittableThreadLocal.version>
 		<!-- Nacos Client 版本 -->
